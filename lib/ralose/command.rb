@@ -40,10 +40,7 @@ module RaLoSe
 
         if request_id != @current_request_id
           print_current_request
-
-          @current_request_id    = request_id
-          @current_request_lines = []
-          @print_current_request = false
+          new_request(request_id)
         end
 
         if line.match?(@query)
@@ -63,6 +60,12 @@ module RaLoSe
     end
 
     private
+
+    def new_request(request_id)
+      @current_request_id    = request_id
+      @current_request_lines = []
+      @print_current_request = false
+    end
 
     def print_current_request
       if !@print_current_request
