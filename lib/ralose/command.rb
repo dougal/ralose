@@ -1,3 +1,5 @@
+require 'optparse'
+
 module RaLoSe
   class Command
 
@@ -8,14 +10,15 @@ module RaLoSe
     REQUEST_ID_RE = /\[[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\]/.freeze
 
     def self.run!
+      new.run!
+    end
+
+    def run!
       # Pipe handling based on: https://www.jstorimer.com/blogs/workingwithcode/7766125-writing-ruby-scripts-that-respect-pipelines
-
-
 
       colorized_output = true
       case_insensitive = false
 
-      require 'optparse'
       OptionParser.new do |options|
         # This banner is the first line of the help documentation.
         options.banner = "Usage: ralose [options] [files]\n\n" \
