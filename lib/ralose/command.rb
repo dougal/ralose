@@ -14,6 +14,10 @@ module RaLoSe
       @case_insensitive = false
 
       parse_options
+
+      @current_request_id    = nil
+      @current_request_lines = []
+      @print_current_request = false
     end
 
     def self.run!
@@ -24,10 +28,6 @@ module RaLoSe
       # Pipe handling based on: https://www.jstorimer.com/blogs/workingwithcode/7766125-writing-ruby-scripts-that-respect-pipelines
       query = ARGV.shift
 
-      current_request_id = nil
-      current_request_lines = []
-      print_current_request = false
-
       # Read from file passed in ARGV, or STDIN.
       ARGF.each_line do |line|
 
@@ -37,9 +37,9 @@ module RaLoSe
           next
         end
 
-        if request_id != current_request_id
-          if print_current_request
-            current_request_lines.each do |current_request_line|
+        if request_id != @current_request_id
+          if @print_current_request
+            @current_request_lines.each do |current_request_line|
               begin
                 $stdout.puts current_request_line
 
@@ -50,9 +50,9 @@ module RaLoSe
             end
           end
 
-          current_request_id    = request_id
-          current_request_lines = []
-          print_current_request = false
+          @current_request_id    = request_id
+          @current_request_lines = []
+          @print_current_request = false
         end
 
         if @case_insensitive
@@ -62,7 +62,7 @@ module RaLoSe
         end
 
         if query_index
-          print_current_request = true
+          @print_current_request = true
 
           if @colorized_output
             line.insert(query_index + query.length, RESET_COLOR)
@@ -70,12 +70,12 @@ module RaLoSe
           end
         end
 
-        current_request_lines << line
+        @current_request_lines << line
 
       end
 
-      if print_current_request
-          current_request_lines.each do |current_request_line|
+      if @print_current_request
+          @current_request_lines.each do |current_request_line|
           begin
             $stdout.puts current_request_line
 
