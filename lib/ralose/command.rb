@@ -38,17 +38,7 @@ module RaLoSe
         end
 
         if request_id != @current_request_id
-          if @print_current_request
-            @current_request_lines.each do |current_request_line|
-              begin
-                $stdout.puts current_request_line
-
-              # Handle case where output pipe is closed before writing is completed.
-              rescue Errno::EPIPE
-                exit(74)
-              end
-            end
-          end
+          print_current_request
 
           @current_request_id    = request_id
           @current_request_lines = []
@@ -74,21 +64,27 @@ module RaLoSe
 
       end
 
-      if @print_current_request
-          @current_request_lines.each do |current_request_line|
-          begin
-            $stdout.puts current_request_line
-
-          # Handle case where output pipe is closed before writing is completed.
-          rescue Errno::EPIPE
-            exit(74)
-          end
-        end
-      end
+      print_current_request
 
     end
 
     private
+
+    def print_current_request
+      if !@print_current_request
+        return
+      end
+
+      @current_request_lines.each do |line|
+        begin
+          $stdout.puts line
+
+        # Handle case where output pipe is closed before writing is completed.
+        rescue Errno::EPIPE
+          exit(74)
+        end
+      end
+    end
 
     def parse_options
       OptionParser.new do |options|
