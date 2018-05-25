@@ -56,6 +56,7 @@ module RaLoSe
           @print_current_request = true
 
           if @colorized_output
+            # TODO: Highlight multiple matches on a single line.
             line.insert(query_index + @query.length, RESET_COLOR)
             line.insert(query_index, RED)
           end
