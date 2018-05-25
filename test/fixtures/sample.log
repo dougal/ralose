@@ -1,0 +1,26 @@
+[c61f4934-2c2a-4042-933d-3ded6b5980f4] Started GET "/blog_posts/1" for 127.0.0.1 at 2018-05-25 11:36:33 +0100
+[c61f4934-2c2a-4042-933d-3ded6b5980f4] Processing by BlogPostsController#show as HTML
+[c61f4934-2c2a-4042-933d-3ded6b5980f4]   Parameters: {"id"=>"1"}
+[c61f4934-2c2a-4042-933d-3ded6b5980f4]   [1m[36mBlogPost Load (0.2ms)[0m  [1m[34mSELECT  "blog_posts".* FROM "blog_posts" WHERE "blog_posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[c61f4934-2c2a-4042-933d-3ded6b5980f4]   ↳ app/controllers/blog_posts_controller.rb:67
+[c61f4934-2c2a-4042-933d-3ded6b5980f4]   Rendering blog_posts/show.html.erb within layouts/application
+[c61f4934-2c2a-4042-933d-3ded6b5980f4]   Rendered blog_posts/show.html.erb within layouts/application (0.6ms)
+[c61f4934-2c2a-4042-933d-3ded6b5980f4] Completed 200 OK in 31ms (Views: 25.0ms | ActiveRecord: 0.2ms)
+
+
+[308be32b-a755-4e92-b3c0-ee330fe41f4a] Started PATCH "/blog_posts/2" for 127.0.0.1 at 2018-05-25 11:36:56 +0100
+[308be32b-a755-4e92-b3c0-ee330fe41f4a] Processing by BlogPostsController#update as HTML
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   Parameters: {"utf8"=>"✓", "authenticity_token"=>"ddDPHZ9Rut2ARDVgYs+WcoVehTsgRMQduU1B6YbkztSfKM6nLqTMcWnf3PJ1E10SVGk0HAFjrBI5BhSTxepJJA==", "blog_post"=>{"title"=>"Another blog post", "body"=>"Sorry it has been so long since the last update.\r\n"}, "commit"=>"Update Blog post", "id"=>"2"}
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   [1m[36mBlogPost Load (0.2ms)[0m  [1m[34mSELECT  "blog_posts".* FROM "blog_posts" WHERE "blog_posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   ↳ app/controllers/blog_posts_controller.rb:67
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   ↳ app/controllers/blog_posts_controller.rb:44
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   [1m[36mBlogPost Update (0.4ms)[0m  [1m[33mUPDATE "blog_posts" SET "body" = ?, "updated_at" = ? WHERE "blog_posts"."id" = ?[0m  [["body", "Sorry it has been so long since the last update.\r\n"], ["updated_at", "2018-05-25 10:36:56.496279"], ["id", 2]]
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   ↳ app/controllers/blog_posts_controller.rb:44
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+[308be32b-a755-4e92-b3c0-ee330fe41f4a]   ↳ app/controllers/blog_posts_controller.rb:44
+[308be32b-a755-4e92-b3c0-ee330fe41f4a] Redirected to http://localhost:3000/blog_posts/2
+[308be32b-a755-4e92-b3c0-ee330fe41f4a] Completed 302 Found in 7ms (ActiveRecord: 1.5ms)
+
+
+[c2f8231f-feae-4b03-9315-2783d03ae2d0] Started GET "/blog_posts/2" for 127.0.0.1 at 2018-05-25 11:36:56 +0100

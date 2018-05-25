@@ -1,9 +1,28 @@
-= rrg
+= RaLoSe - Rails Request Grep
 
-Description goes here.
+Search Rails logs for a string - get all the log lines for matching requests.
 
-== Contributing to rrg
- 
+== Install
+
+Either install the Gem:
+
+```
+gem install ralose
+```
+
+Or add to your Gemfile if using as part of a project:
+
+```
+  gem "ralose"
+```
+
+== Usage
+
+TODO
+
+
+== Contributing to ralose
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.

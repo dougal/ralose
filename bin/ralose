@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'ralose/command'
+
+RaLoSe::Command.run!
+
+# Prints out all lines for a Rails request where one line in that request
+# matches the passed search string.
