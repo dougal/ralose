@@ -44,7 +44,9 @@ In both cases `ralose` will output requests which match the search string `fooba
 For additional options, run `ralose -h`.
 
 
-== Contributing to ralose
+== Contributing to RaLoSe
+
+Source is available on Github at https://github.com/dougal/ralose.
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
