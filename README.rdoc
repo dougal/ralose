@@ -2,6 +2,12 @@
 
 Search Rails logs for a string - get all the log lines for matching requests.
 
+RaLoSe uses Rails request IDs to group lines from the same request. Make sure you have these configured in your environment. For example, ensure `config/env/production.rb` has the line:
+
+```
+config.log_tags = [ :request_id ]
+```
+
 == Install
 
 Either install the Gem:
@@ -13,12 +19,29 @@ gem install ralose
 Or add to your Gemfile if using as part of a project:
 
 ```
-  gem "ralose"
+gem "ralose"
 ```
+
+Then `bundle install`.
+
 
 == Usage
 
-TODO
+You can either pass a file:
+
+```
+ralose foobar log/production.log
+```
+
+or pipe a file to STDIN:
+
+```
+tail -f log/production.log | ralose foobar
+```
+
+In both cases `ralose` will output requests which match the search string `foobar`.
+
+For additional options, run `ralose -h`.
 
 
 == Contributing to ralose
