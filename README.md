@@ -1,4 +1,5 @@
-= RaLoSe - Rails Log Search
+RaLoSe - Rails Log Search
+=========================
 
 Search Rails logs for a string - get all the log lines for matching requests.
 
@@ -8,7 +9,8 @@ RaLoSe uses Rails request IDs to group lines from the same request. Make sure yo
 config.log_tags = [ :request_id ]
 ```
 
-== Install
+Install
+-------
 
 Either install the Gem:
 
@@ -25,7 +27,8 @@ gem "ralose"
 Then `bundle install`.
 
 
-== Usage
+Usage
+-----
 
 You can either pass a file:
 
@@ -44,7 +47,8 @@ In both cases `ralose` will output requests which match the search string `fooba
 For additional options, run `ralose -h`.
 
 
-== Contributing to RaLoSe
+Contributing to RaLoSe
+----------------------
 
 Source is available on Github at https://github.com/dougal/ralose.
 
@@ -56,7 +60,8 @@ Source is available on Github at https://github.com/dougal/ralose.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+Copyright
+---------
 
 Copyright (c) 2018 Douglas F Shearer. See LICENSE.txt for
 further details.
