@@ -35,19 +35,19 @@ class TestRaLoSe < Test::Unit::TestCase
   end
 
   def test_colors_the_matching_string
-    query  = 'GET "/blog_posts/2"'
+    query  = 'something'
     output = `bundle exec ralose '#{query}' test/fixtures/sample.log`
 
-    expected_output = %{\e[31mGET "/blog_posts/2"\e[0m}
+    expected_output = %{\e[31msomething\e[0m and \e[31msomething\e[0m}
     assert output.include?(expected_output)
   end
 
   def test_does_not_color_the_matching_string
-    query  = 'GET "/blog_posts/2"'
+    query  = 'something'
     output = `bundle exec ralose --no-color '#{query}' test/fixtures/sample.log`
 
-    unexpected_output = %{\e[31mGET "/blog_posts/2"\e[0m}
-    expected_output   = %{GET "/blog_posts/2"}
+    unexpected_output = %{\e[31msomething\e[0m and \e[31msomething\e[0m}
+    expected_output   = %{something and something}
 
     assert output.include?(expected_output)
     assert !output.include?(unexpected_output)
