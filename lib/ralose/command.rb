@@ -19,7 +19,7 @@ module RaLoSe
       @current_request_lines = []
       @print_current_request = false
 
-      @query = ARGV.shift
+      @query = Regexp.new(ARGV.shift, @case_insensitive)
     end
 
     def self.run!
@@ -46,18 +46,11 @@ module RaLoSe
           @print_current_request = false
         end
 
-        if @case_insensitive
-          query_index = line.downcase.index(@query.downcase)
-        else
-          query_index = line.index(@query)
-        end
-
-        if query_index
+        if line.match?(@query)
           @print_current_request = true
 
           if @colorized_output
-            r = Regexp.new(@query, @case_insensitive)
-            line.gsub!(r, "#{RED}\\0#{RESET_COLOR}")
+            line.gsub!(@query, "#{RED}\\0#{RESET_COLOR}")
           end
         end
 
