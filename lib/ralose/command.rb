@@ -18,6 +18,8 @@ module RaLoSe
       @current_request_id    = nil
       @current_request_lines = []
       @print_current_request = false
+
+      @query = ARGV.shift
     end
 
     def self.run!
@@ -26,7 +28,6 @@ module RaLoSe
 
     def run!
       # Pipe handling based on: https://www.jstorimer.com/blogs/workingwithcode/7766125-writing-ruby-scripts-that-respect-pipelines
-      query = ARGV.shift
 
       # Read from file passed in ARGV, or STDIN.
       ARGF.each_line do |line|
@@ -46,16 +47,16 @@ module RaLoSe
         end
 
         if @case_insensitive
-          query_index = line.downcase.index(query.downcase)
+          query_index = line.downcase.index(@query.downcase)
         else
-          query_index = line.index(query)
+          query_index = line.index(@query)
         end
 
         if query_index
           @print_current_request = true
 
           if @colorized_output
-            line.insert(query_index + query.length, RESET_COLOR)
+            line.insert(query_index + @query.length, RESET_COLOR)
             line.insert(query_index, RED)
           end
         end
