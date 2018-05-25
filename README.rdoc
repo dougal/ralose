@@ -1,4 +1,4 @@
-= RaLoSe - Rails Request Grep
+= RaLoSe - Rails Log Search
 
 Search Rails logs for a string - get all the log lines for matching requests.
 
