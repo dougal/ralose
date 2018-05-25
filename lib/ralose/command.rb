@@ -76,13 +76,20 @@ module RaLoSe
       end
 
       @current_request_lines.each do |line|
-        begin
-          $stdout.puts line
+        print_line(line)
+      end
 
-        # Handle case where output pipe is closed before writing is completed.
-        rescue Errno::EPIPE
-          exit(74)
-        end
+      # TODO: Print newlines above the 2nd request onwards?
+      print_line("\n\n")
+    end
+
+    def print_line(line)
+      begin
+        $stdout.puts line
+
+      # Handle case where output pipe is closed before writing is completed.
+      rescue Errno::EPIPE
+        exit(74)
       end
     end
 
